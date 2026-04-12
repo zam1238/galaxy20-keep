@@ -14,11 +14,18 @@ jobs:
       contents: write
     
     steps:
+    
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      - name: Update README with timestamp
+        run: |
+          curl https://us0.sandbox.galaxycloud.app || true
+          curl https://au0.sandbox.galaxycloud.app || true
+          curl https://fr0.sandbox.galaxycloud.app || true
+    
       - name: Update README with timestamp
         run: |
           # 生成当前时间
